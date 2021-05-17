@@ -1,0 +1,1 @@
+web: gunicorn audiolytic.wsgi --log-file -
