@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-g8@r%yn(=k*j9q-w0ph&mfq$rqqp6pjf5ot9xxa#g#+hut^xfg
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['audiolytic1.herokuapp.com/']
+ALLOWED_HOSTS = ['audiolytic.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
