@@ -11,16 +11,22 @@
         <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel='stylesheet' />
 
         <!-- The main CSS file -->
-        <link href="css/file_upload.css" rel="stylesheet" />
+        <link href="/static/css/file_upload.css" rel="stylesheet" />
     </head>
 
     <body>
+      <ul>
+        <li><a href="/static/home.html">Home</a></li>
+        <li><a href="/static/browser.html">Browse</a></li>
+        <li><a href="/static/home.html">Logout</a></li>
+
+      </ul>
+
 
         <form id="upload" method="post" action="upload.php" enctype="multipart/form-data">
             <div id="drop">
                 Drop Here
-
-                <a>Browse</a>
+                <a>upload</a>
                 <input type="file" name="upl" multiple />
             </div>
 
@@ -32,15 +38,15 @@
 
         <!-- JavaScript Includes -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script src="js/jquery.knob.js"></script>
+        <script src="/static/assets/js/jquery.knob.js"></script>
 
         <!-- jQuery File Upload Dependencies -->
-        <script src="js/jquery.ui.widget.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.iframe-transport/1.0.1/jquery.iframe-transport.js"></script>
-        <script src="js/jquery.fileupload.js"></script>
+        <script src="/static/assets/js/jquery.ui.widget.js"></script>
+        <script src="/static/assets/js/jquery.iframe-transport.js"></script>
+        <script src=/static/"assets/js/jquery.fileupload.js"></script>
 
         <!-- Our main JS file -->
-        <script src="js/file_upload.js"></script>
+        <script src="/static/js/file_upload.js"></script>
 
     </body>
 </html>
