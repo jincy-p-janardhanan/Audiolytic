@@ -52,7 +52,7 @@ def signin(request):
             return redirect('/upload')
         else:
             form = AuthenticationForm(request.POST)
-            logging.debug('Received user None', (username, password))
+            logging.debug('Received user None')
             return render(request, 'signin.html', {'form': form})
     else:
         form = AuthenticationForm()
