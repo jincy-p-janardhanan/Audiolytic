@@ -25,5 +25,5 @@ urlpatterns = [
     path('signout', signout, name='signout'),
     path('upload', upload, name='upload'),
     path('download', download, name='download'),
-    #  path('browse', browse, name='browse'),
+    path('browse', browse, name='browse'),
 ]

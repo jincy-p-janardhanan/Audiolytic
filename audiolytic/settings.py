@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
+from .aws_s3_config import *
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -125,27 +126,6 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.11/howto/static-files/
-STATIC_ROOT  =   os.path.join(BASE_DIR, 'static')
-STATIC_URL = '/static/'
-
-# Extra lookup directories for collectstatic to find static files
-STATICFILES_DIRS = (
-    os.path.join(STATIC_ROOT, 'css'),
-    os.path.join(STATIC_ROOT, 'css', 'bootstrap'),
-    os.path.join(STATIC_ROOT, 'js'),
-    os.path.join(STATIC_ROOT, 'images'),
-    os.path.join(STATIC_ROOT, 'scss'),
-    os.path.join(STATIC_ROOT, 'vendor'),
-    os.path.join(STATIC_ROOT, 'fonts')
-    ,)
-
-#  Add configuration for static files storage using whitenoise
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-WHITENOISE_USE_FINDERS = True
-
-
 import dj_database_url
 prod_db  =  dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(prod_db)
@@ -169,7 +149,7 @@ else:
 
 LOGIN_URL = '/signin'
 
-logging.debug('Base directory: ' + str(BASE_DIR))
-logging.debug('Static root: ' + STATIC_ROOT)
+# logging.debug('Base directory: ' + str(BASE_DIR))
+# logging.debug('Static root: ' + STATIC_ROOT)
 # logging.debug('Staticfiles_dirs:', STATICFILES_DIRS)
 

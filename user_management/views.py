@@ -72,4 +72,8 @@ def download(request):
     return render(request, 'file_download.html')
 
 def index(request):
-    return redirect('/signup')
+    return render(request, 'home.html')
+
+@login_required
+def browse(request):
+    return render(request, 'filebrowser.html')
