@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8"/>
+        <title>Upload</title>
+
+        <!-- Google web fonts -->
+        <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel='stylesheet' />
+
+        <!-- The main CSS file -->
+        <link href="https://audiolyticbucket.s3.ap-south-1.amazonaws.com/static/css/file_upload.css" rel="stylesheet" />
+    </head>
+
+    <body>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/browser">Browse</a></li>
+        <li><a href="/signout">signout</a></li>
+
+      </ul>
+
+
+        <form id="upload" action="/upload" method="post" enctype="multipart/form-data" style="width:40%; height:20%">
+            {% csrf_token %}
+            <div id="drop"><p style="white-space:pre-wrap;">Drop your favourite music here and get back the coolest visualization for it!
+            </p>
+            <a>UPLOAD</a>
+                <input type="file" name="uploaded_file" for="uploaded_file"/>
+                <script type="text/javascript">
+                    document.getElementById("upload").onchange = function() {
+                        document.getElementById("upload").submit();
+                    };
+                </script>
+            </div>
+
+        </form>
+
+        <!-- JavaScript Includes -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="https://audiolyticbucket.s3.ap-south-1.amazonaws.com/static/js/jquery.knob.js"></script>
+
+        <!-- jQuery File Upload Dependencies -->
+        <script src="https://audiolyticbucket.s3.ap-south-1.amazonaws.com/static/js/jquery.ui.widget.js"></script>
+        <script src="https://audiolyticbucket.s3.ap-south-1.amazonaws.com/static/js/jquery.iframe-transport.js"></script>
+        <script src="https://audiolyticbucket.s3.ap-south-1.amazonaws.com/static/js/jquery.fileupload.js"></script>
+
+        <!-- Our main JS file -->
+        <script src="https://audiolyticbucket.s3.ap-south-1.amazonaws.com/static/js/file_upload.js"></script>
+
+    </body>
+</html>

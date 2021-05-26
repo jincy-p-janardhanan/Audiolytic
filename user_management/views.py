@@ -15,30 +15,17 @@ class AudioUploadView(CreateView):
     model = UploadAudio
     fields = ['uploaded_file', ]
     success_url = reverse_lazy('download')
-    logging.info('in view')
+    logging.debug('in view')
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         uploaded_files = UploadAudio.objects.all()
         if uploaded_files == None:
-            logging.info("No objects received")
+            logging.debug("No objects received")
         else:
-            logging.info('got objects', context)
+            logging.debug('got objects', context)
         context['uploaded_file'] = uploaded_files
         logging.info('returning context', context)
         return context
-
-# @login_required
-# def upload(request):
-#     if request.method == 'POST':
-#         form = DocumentForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('/download')
-#     else:
-#         form = DocumentForm()
-#     return render(request, 'file_upload.html', {
-#         'form': form
-#     })
 
 def signup(request):
     if request.user.is_authenticated:

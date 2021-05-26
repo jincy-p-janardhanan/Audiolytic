@@ -23,7 +23,7 @@ urlpatterns = [
     path('signup', signup, name='signup'),
     path('signin', signin, name='signin'),
     path('signout', signout, name='signout'),
-    path('upload', AudioUploadView.as_view(), name='file_upload'),
+    path('upload', login_required(AudioUploadView.as_view()), name='file_upload'),
     path('download', download, name='download'),
     # path('browse', browse, name='browse'),
 ]

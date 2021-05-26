@@ -149,7 +149,3 @@ else:
 
 LOGIN_URL = '/signin'
 
-# logging.debug('Base directory: ' + str(BASE_DIR))
-# logging.debug('Static root: ' + STATIC_ROOT)
-# logging.debug('Staticfiles_dirs:', STATICFILES_DIRS)
-
