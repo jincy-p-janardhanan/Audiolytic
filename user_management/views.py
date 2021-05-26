@@ -4,21 +4,41 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
+from django.views.generic.edit import CreateView
+from django.urls import reverse_lazy
 from .forms import *
+from .models import *
 
 import logging
 
-def model_form_upload(request):
-    if request.method == 'POST':
-        form = DocumentForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('home')
-    else:
-        form = DocumentForm()
-    return render(request, 'file_upload.html', {
-        'form': form
-    })
+class AudioUploadView(CreateView):
+    model = UploadAudio
+    fields = ['uploaded_file', ]
+    success_url = reverse_lazy('download')
+    logging.info('in view')
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        uploaded_files = UploadAudio.objects.all()
+        if uploaded_files == None:
+            logging.info("No objects received")
+        else:
+            logging.info('got objects', context)
+        context['uploaded_file'] = uploaded_files
+        logging.info('returning context', context)
+        return context
+
+# @login_required
+# def upload(request):
+#     if request.method == 'POST':
+#         form = DocumentForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('/download')
+#     else:
+#         form = DocumentForm()
+#     return render(request, 'file_upload.html', {
+#         'form': form
+#     })
 
 def signup(request):
     if request.user.is_authenticated:
@@ -41,7 +61,7 @@ def signup(request):
 
 def signin(request):
     if request.user.is_authenticated:
-        return redirect(request, '/upload')
+        return redirect('/upload')
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -64,16 +84,12 @@ def signout(request):
     return redirect('/')
 
 @login_required
-def upload(request):
-    return render(request, 'file_upload.html')
-
-@login_required
 def download(request):
     return render(request, 'file_download.html')
 
 def index(request):
     return render(request, 'home.html')
 
-@login_required
-def browse(request):
-    return render(request, 'filebrowser.html')
+# @login_required
+# def browse(request):
+#     return render(request, 'filebrowser.html')

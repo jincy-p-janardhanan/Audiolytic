@@ -1,10 +1,13 @@
 from django.db import models
+import logging
 
-# class AudiolyticUser(models.Model):
-#     fullname = models.CharField(max_length=50)
+def validate_file_extension(value):
+    logging.info('validating file')
+    if not value.name.endswith('.mp3'):
+        logging.info('not mp3')
+        raise ValidationError(u'Error message')
 
-class Document(models.Model):
-    description = models.CharField(max_length=255, blank=True)
-    document = models.FileField(upload_to='documents/')
+class UploadAudio(models.Model):
+    uploaded_file = models.FileField(validators=[validate_file_extension])
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
